@@ -20,6 +20,7 @@
     ol {
       list-style-type: none;
       padding: 0;
+      margin-top: 0;
     }
     li {
       margin-bottom: 10px;
@@ -116,13 +117,15 @@
 
   .form-input {
     flex: 1; /* Ocupa o espaço disponível restante */
-    padding: 5px; /* Adiciona um pouco de espaço interno no input */
+    padding: 3px; /* Adiciona um pouco de espaço interno no input */
     border-radius: 7px;
     background-color: #f8f8f8; /* Fundo cinza */
+   
   }
   /* Novo estilo para o Nome do aluno em negrito */
   .bold-text {
       font-weight: bold;
+      font-size: 16px;
       
     }
 
@@ -200,47 +203,70 @@
           <input type="radio" name="q2" value="e" id="q2e">
           <label for="q2e" data-letter="E"><span>Uma abordagem filosófica que busca revelar a existência de Deus e fundamentar a moralidade religiosa.</span></label>
         </li>
+        <li>
+          <div>
+            <h3>Questão 3/10</h3>
+            <h4>0.20 pts.</h4>
+          </div>
+          <p>Qual é o conceito de Sociologia da Religião?</p>
+          <input type="radio" name="q3" value="a" id="q3a">
+          <label for="q3a" data-letter="A"><span>Um ramo da teologia que estuda a história e as escrituras das principais religiões do mundo.</span></label>
+          <input type="radio" name="q3" value="b" id="q3b">
+          <label for="q3b" data-letter="B"><span>Uma área de estudo que explora as práticas religiosas em diferentes culturas e seus impactos nas crenças individuais.</span></label>
+          <input type="radio" name="q3" value="c" id="q3c">
+          <label for="q3c" data-letter="C"><span>Uma ciência social que analisa as interações entre a religião e a sociedade, investigando suas influências mútuas.</span></label>
+          <input type="radio" name="q3" value="d" id="q3d">
+          <label for="q3d" data-letter="D"><span>AUma disciplina acadêmica que se concentra em analisar a psicologia dos líderes religiosos e suas práticas de liderança.</span></label>
+          <input type="radio" name="q3" value="e" id="q3e">
+          <label for="q3e" data-letter="E"><span>Uma abordagem filosófica que busca revelar a existência de Deus e fundamentar a moralidade religiosa.</span></label>
+        </li>
+
         <!-- Repita o bloco de questões para as próximas 3 questões -->
       </ol>
     </form>
     <button id="finalizarBtn">Finalizar Prova</button>
-</div>
+    
+  </div>
 
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script>
-  document.getElementById("finalizarBtn").addEventListener("click", function() {
-    const quizForm = document.getElementById("quizForm");
-    const formData = new FormData(quizForm);
-
-    // Criar um array para armazenar as respostas do usuário
-    const respostasUsuario = [];
-
-    formData.forEach((value) => {
-      respostasUsuario.push(value);
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    document.getElementById("finalizarBtn").addEventListener("click", function() {
+      const quizForm = document.getElementById("quizForm");
+      const formData = new FormData(quizForm);
+    
+      // Criar um array para armazenar as respostas do usuário
+      const respostasUsuario = [];
+    
+      formData.forEach((value) => {
+        respostasUsuario.push(value);
+      });
+    
+      // Gerar o conteúdo do PDF com as respostas do usuário
+      let conteudoHTML = "<h1>Respostas do Quiz:</h1>";
+      const questoes = document.querySelectorAll("li");
+      questoes.forEach((questao, index) => {
+        const enunciado = questao.querySelector("p").innerText;
+        const respostaSelecionada = respostasUsuario[index];
+        const resposta = `Questão ${index + 1}: ${enunciado}\nResposta: ${respostaSelecionada}<br>`;
+        conteudoHTML += resposta;
+      });
+    
+      // Converter o conteúdo HTML para imagem usando html2canvas.js com scale maior (exemplo: 2)
+      html2canvas(document.body, { scale: 3 }).then(canvas => {
+        // Obter a imagem em formato de base64
+        const imgData = canvas.toDataURL("image/png");
+        
+        // Criar um link para download da imagem
+        const link = document.createElement("a");
+        link.download = "prova-sociologia.png";
+        link.href = imgData;
+        
+        // Adicionar o link no documento e clicá-lo para iniciar o download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
     });
-
-    // Gerar o conteúdo do PDF com as respostas do usuário
-    let conteudoHTML = "Respostas do Quiz:\n";
-    const questoes = document.querySelectorAll("li");
-    questoes.forEach((questao, index) => {
-      const enunciado = questao.querySelector("p").innerText;
-      const respostaSelecionada = respostasUsuario[index];
-      const resposta = `Questão ${index + 1}: ${enunciado}\nResposta: ${respostaSelecionada}\n\n`;
-      conteudoHTML += resposta;
-    });
-
-    // Converter o conteúdo HTML para imagem usando html2canvas.js com scale maior (exemplo: 3)
-    html2canvas(document.body, { scale: 3 }).then(canvas => {
-      // Obter a imagem em formato de base64
-      const imgData = canvas.toDataURL("image/png");
-
-      // Criar o link do WhatsApp com a mensagem e a imagem anexada
-      const whatsappLink = "https://api.whatsapp.com/send?phone=5574981265381" + encodeURIComponent(conteudoHTML);
-      
-      // Abrir o link do WhatsApp
-      window.open(whatsappLink);
-    });
-  });
-</script>
+  </script>
 </body>
 </html>
