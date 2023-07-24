@@ -6,36 +6,36 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 2vh; /* Usando unidades de viewport height para margens */
+      margin: 20px;
     }
     .quiz {
-      max-width: 600px;
       margin: 0 auto;
+      max-width: 600px; /* Definindo uma largura máxima para o conteúdo */
     }
     h1 {
       text-align: center;
-      margin-top: 2vh;
+      margin-top: 20px;
     }
     ol {
       list-style-type: none;
       padding: 0;
     }
     li {
-      margin-bottom: 2vh; /* Usando unidades de viewport height para espaçamento vertical */
+      margin-bottom: 20px;
       border: 1px solid #ccc;
-      padding: 2vh; /* Usando unidades de viewport height para espaçamento interno */
+      padding: 15px;
       border-radius: 5px;
     }
     button {
       display: block;
-      margin: 2vh auto; /* Usando unidades de viewport height para margens */
-      padding: 1.5vh 3vh; /* Usando unidades de viewport height para espaçamento interno */
+      margin: 20px auto;
+      padding: 10px 20px;
       background-color: #007bff;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 2vh; /* Usando unidades de viewport height para tamanho de fonte */
+      font-size: 16px;
     }
     input[type="radio"] {
       display: none;
@@ -43,8 +43,8 @@
     label {
       cursor: pointer;
       display: block;
-      margin-bottom: 1vh; /* Usando unidades de viewport height para espaçamento vertical */
-      padding-left: 3vh; /* Usando unidades de viewport height para espaçamento interno */
+      margin-bottom: 10px;
+      padding-left: 30px;
       position: relative;
       transition: background-color 0.5s ease;
     }
@@ -54,17 +54,17 @@
     label:before {
       content: attr(data-letter);
       font-weight: bold;
-      font-size: 2vh; /* Usando unidades de viewport height para tamanho de fonte */
-      width: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
-      height: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
-      line-height: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
+      font-size: 16px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
       text-align: center;
       border-radius: 50%;
       background-color: #fff;
       border: 2px solid #007bff;
       position: absolute;
       left: 0;
-      top: 1vh; /* Usando unidades de viewport height para alinhar o ícone verticalmente */
+      top: 2px;
     }
     input[type="radio"]:checked + label:before {
       background-color: #007bff;
@@ -73,42 +73,45 @@
     label span {
       cursor: pointer;
       display: inline-block;
-      padding-left: 2vh; /* Usando unidades de viewport height para espaçamento interno */
+      padding-left: 10px;
     }
     /* Estilo para destacar a alternativa selecionada */
     input[type="radio"]:checked + label span {
       background-color: #007bff;
       color: #fff;
-      padding: 1vh 2vh; /* Usando unidades de viewport height para espaçamento interno */
+      padding: 5px;
       border-radius: 3px;
     }
 
     /* Adaptação para dispositivos móveis */
     @media (max-width: 768px) {
+      body {
+        margin: 10px; /* Reduzindo as margens no dispositivo móvel */
+      }
       .quiz {
-        max-width: 90%;
-      }
-      li {
-        padding: 2vh; /* Usando unidades de viewport height para espaçamento interno */
-      }
-      label span {
-        padding-left: 1vh; /* Usando unidades de viewport height para espaçamento interno */
+        max-width: 100%; /* Ocupando a largura total do dispositivo móvel */
       }
       h1 {
-        font-size: 4vh; /* Usando unidades de viewport height para tamanho de fonte */
+        font-size: 24px;
+      }
+      li {
+        padding: 10px;
+      }
+      label span {
+        padding-left: 5px;
       }
       .form-row {
         display: block;
       }
       .form-label {
         padding-right: 0;
-        margin-bottom: 1vh; /* Usando unidades de viewport height para espaçamento vertical */
+        margin-bottom: 5px;
       }
       .form-input {
         width: 100%;
       }
       button {
-        font-size: 3vh; /* Usando unidades de viewport height para tamanho de fonte */
+        font-size: 16px;
       }
     }
   </style>
