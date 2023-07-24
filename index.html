@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Atividade Final de Sociologia da Religião</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -82,7 +83,7 @@
       border-radius: 3px;
     }
 
-     /* Adaptação para dispositivos móveis */
+    /* Adaptação para dispositivos móveis */
     @media (max-width: 768px) {
       .quiz {
         max-width: 90%;
@@ -93,33 +94,20 @@
       label span {
         padding-left: 5px;
       }
-      .form-label {
-        flex: 0 0 100px;
-        padding-right: 5px;
-      }
-      .form-input {
-        flex: 1;
-      }
       h1 {
         font-size: 24px;
       }
+      .form-row {
+        display: block;
+      }
+      .form-label {
+        padding-right: 0;
+        margin-bottom: 5px;
+      }
+      .form-input {
+        width: 100%;
+      }
     }
-
-    /* Additional style to display label and input in the same line */
-    .form-row {
-      display: flex;
-      align-items: center;
-    }
-
-    .form-label {
-      flex: 0 0 150px;
-      padding-right: 7px;
-    }
-
-    .form-input {
-      flex: 1;
-    }
-
   </style>
 </head>
 <body>
@@ -197,7 +185,7 @@
         
         // Criar um link para download da imagem
         const link = document.createElement("a");
-        link.download = "quiz_respostas.png";
+        link.download = "prova-sociologia.png";
         link.href = imgData;
         
         // Adicionar o link no documento e clicá-lo para iniciar o download
