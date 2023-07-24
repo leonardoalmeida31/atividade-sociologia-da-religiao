@@ -6,36 +6,36 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 2vh; /* Usando unidades de viewport height para margens */
     }
     .quiz {
-    
+      max-width: 600px;
       margin: 0 auto;
     }
     h1 {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 2vh;
     }
     ol {
       list-style-type: none;
       padding: 0;
     }
     li {
-      margin-bottom: 20px;
+      margin-bottom: 2vh; /* Usando unidades de viewport height para espaçamento vertical */
       border: 1px solid #ccc;
-      padding: 15px;
+      padding: 2vh; /* Usando unidades de viewport height para espaçamento interno */
       border-radius: 5px;
     }
     button {
       display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
+      margin: 2vh auto; /* Usando unidades de viewport height para margens */
+      padding: 1.5vh 3vh; /* Usando unidades de viewport height para espaçamento interno */
       background-color: #007bff;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 2vh; /* Usando unidades de viewport height para tamanho de fonte */
     }
     input[type="radio"] {
       display: none;
@@ -43,8 +43,8 @@
     label {
       cursor: pointer;
       display: block;
-      margin-bottom: 10px;
-      padding-left: 30px;
+      margin-bottom: 1vh; /* Usando unidades de viewport height para espaçamento vertical */
+      padding-left: 3vh; /* Usando unidades de viewport height para espaçamento interno */
       position: relative;
       transition: background-color 0.5s ease;
     }
@@ -54,17 +54,17 @@
     label:before {
       content: attr(data-letter);
       font-weight: bold;
-      font-size: 16px;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
+      font-size: 2vh; /* Usando unidades de viewport height para tamanho de fonte */
+      width: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
+      height: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
+      line-height: 3vh; /* Usando unidades de viewport height para tamanho do ícone */
       text-align: center;
       border-radius: 50%;
       background-color: #fff;
       border: 2px solid #007bff;
       position: absolute;
       left: 0;
-      top: 2px;
+      top: 1vh; /* Usando unidades de viewport height para alinhar o ícone verticalmente */
     }
     input[type="radio"]:checked + label:before {
       background-color: #007bff;
@@ -73,13 +73,13 @@
     label span {
       cursor: pointer;
       display: inline-block;
-      padding-left: 10px;
+      padding-left: 2vh; /* Usando unidades de viewport height para espaçamento interno */
     }
     /* Estilo para destacar a alternativa selecionada */
     input[type="radio"]:checked + label span {
       background-color: #007bff;
       color: #fff;
-      padding: 5px;
+      padding: 1vh 2vh; /* Usando unidades de viewport height para espaçamento interno */
       border-radius: 3px;
     }
 
@@ -89,23 +89,26 @@
         max-width: 90%;
       }
       li {
-        padding: 10px;
+        padding: 2vh; /* Usando unidades de viewport height para espaçamento interno */
       }
       label span {
-        padding-left: 5px;
+        padding-left: 1vh; /* Usando unidades de viewport height para espaçamento interno */
       }
       h1 {
-        font-size: 24px;
+        font-size: 4vh; /* Usando unidades de viewport height para tamanho de fonte */
       }
       .form-row {
         display: block;
       }
       .form-label {
         padding-right: 0;
-        margin-bottom: 5px;
+        margin-bottom: 1vh; /* Usando unidades de viewport height para espaçamento vertical */
       }
       .form-input {
         width: 100%;
+      }
+      button {
+        font-size: 3vh; /* Usando unidades de viewport height para tamanho de fonte */
       }
     }
   </style>
