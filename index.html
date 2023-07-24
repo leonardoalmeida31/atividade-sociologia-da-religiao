@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Atividade Final de Sociologia da Religião</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .quiz {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    ol {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+      display: block;
+      margin-bottom: 10px;
+      padding-left: 30px;
+      position: relative;
+      transition: background-color 0.5s ease;
+    }
+    label:hover {
+      background-color: #007bff;
+    }
+    label:before {
+      content: attr(data-letter);
+      font-weight: bold;
+      font-size: 16px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #007bff;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    input[type="radio"]:checked + label:before {
+      background-color: #007bff;
+    }
+    /* Estilo para deixar o texto da alternativa selecionável */
+    label span {
+      cursor: pointer;
+      display: inline-block;
+      padding-left: 10px;
+    }
+    /* Estilo para destacar a alternativa selecionada */
+    input[type="radio"]:checked + label span {
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+    }
+
+    /* Adaptação para dispositivos móveis */
+    @media (max-width: 768px) {
+      li {
+        padding: 10px;
+      }
+      label span {
+        padding-left: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz">
+    <h1>Atividade Final de Sociologia da Religião</h1>
+    <form id="quizForm">
+      <ol>
+        <li>
+          <h3>Questão 1:</h3>
+          <p>O que é Sociologia?</p>
+          <input type="radio" name="q1" value="a" id="q1a">
+          <label for="q1a" data-letter="A"><span>A ciência que estuda o corpo humano</span></label>
+          <input type="radio" name="q1" value="b" id="q1b">
+          <label for="q1b" data-letter="B"><span>A arte de pintar paisagens</span></label>
+          <input type="radio" name="q1" value="c" id="q1c">
+          <label for="q1c" data-letter="C"><span>A religião que acredita em múltiplos deuses</span></label>
+          <input type="radio" name="q1" value="d" id="q1d">
+          <label for="q1d" data-letter="D"><span>Um ramo da filosofia que estuda a ética</span></label>
+          <input type="radio" name="q1" value="e" id="q1e">
+          <label for="q1e" data-letter="E"><span>A ciência que estuda a sociedade e suas relações</span></label>
+        </li>
+        <li>
+          <h3>Questão 2:</h3>
+          <p>Qual é o conceito de Sociologia da Religião?</p>
+          <input type="radio" name="q2" value="a" id="q2a">
+          <label for="q2a" data-letter="A"><span>Um ramo da teologia que estuda a história e as escrituras das principais religiões do mundo.</span></label>
+          <input type="radio" name="q2" value="b" id="q2b">
+          <label for="q2b" data-letter="B"><span>Uma área de estudo que explora as práticas religiosas em diferentes culturas e seus impactos nas crenças individuais.</span></label>
+          <input type="radio" name="q2" value="c" id="q2c">
+          <label for="q2c" data-letter="C"><span>Uma ciência social que analisa as interações entre a religião e a sociedade, investigando suas influências mútuas.</span></label>
+          <input type="radio" name="q2" value="d" id="q2d">
+          <label for="q2d" data-letter="D"><span>AUma disciplina acadêmica que se concentra em analisar a psicologia dos líderes religiosos e suas práticas de liderança.</span></label>
+          <input type="radio" name="q2" value="e" id="q2e">
+          <label for="q2e" data-letter="E"><span>Uma abordagem filosófica que busca revelar a existência de Deus e fundamentar a moralidade religiosa.</span></label>
+        </li>
+        <!-- Repita o bloco de questões para as próximas 3 questões -->
+      </ol>
+    </form>
+    <button id="finalizarBtn">Finalizar Prova</button>
+  </div>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    document.getElementById("finalizarBtn").addEventListener("click", function() {
+      const quizForm = document.getElementById("quizForm");
+      const formData = new FormData(quizForm);
+    
+      // Criar um array para armazenar as respostas do usuário
+      const respostasUsuario = [];
+    
+      formData.forEach((value) => {
+        respostasUsuario.push(value);
+      });
+    
+      // Gerar o conteúdo do PDF com as respostas do usuário
+      let conteudoHTML = "<h1>Respostas do Quiz:</h1>";
+      const questoes = document.querySelectorAll("li");
+      questoes.forEach((questao, index) => {
+        const enunciado = questao.querySelector("p").innerText;
+        const respostaSelecionada = respostasUsuario[index];
+        const resposta = `Questão ${index + 1}: ${enunciado}\nResposta: ${respostaSelecionada}<br>`;
+        conteudoHTML += resposta;
+      });
+    
+      // Converter o conteúdo HTML para imagem usando html2canvas.js com scale maior (exemplo: 2)
+      html2canvas(document.body, { scale: 2 }).then(canvas => {
+        // Obter a imagem em formato de base64
+        const imgData = canvas.toDataURL("image/png");
+        
+        // Criar um link para download da imagem
+        const link = document.createElement("a");
+        link.download = "quiz_respostas.png";
+        link.href = imgData;
+        
+        // Adicionar o link no documento e clicá-lo para iniciar o download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    });
+  </script>
+</body>
+</html>
