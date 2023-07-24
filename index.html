@@ -204,48 +204,43 @@
       </ol>
     </form>
     <button id="finalizarBtn">Finalizar Prova</button>
-    
-  </div>
+</div>
 
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script>
-    document.getElementById("finalizarBtn").addEventListener("click", function() {
-      const quizForm = document.getElementById("quizForm");
-      const formData = new FormData(quizForm);
-    
-      // Criar um array para armazenar as respostas do usuário
-      const respostasUsuario = [];
-    
-      formData.forEach((value) => {
-        respostasUsuario.push(value);
-      });
-    
-      // Gerar o conteúdo do PDF com as respostas do usuário
-      let conteudoHTML = "<h1>Respostas do Quiz:</h1>";
-      const questoes = document.querySelectorAll("li");
-      questoes.forEach((questao, index) => {
-        const enunciado = questao.querySelector("p").innerText;
-        const respostaSelecionada = respostasUsuario[index];
-        const resposta = `Questão ${index + 1}: ${enunciado}\nResposta: ${respostaSelecionada}<br>`;
-        conteudoHTML += resposta;
-      });
-    
-      // Converter o conteúdo HTML para imagem usando html2canvas.js com scale maior (exemplo: 2)
-      html2canvas(document.body, { scale: 3 }).then(canvas => {
-        // Obter a imagem em formato de base64
-        const imgData = canvas.toDataURL("image/png");
-        
-        // Criar um link para download da imagem
-        const link = document.createElement("a");
-        link.download = "prova-sociologia.png";
-        link.href = imgData;
-        
-        // Adicionar o link no documento e clicá-lo para iniciar o download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+  document.getElementById("finalizarBtn").addEventListener("click", function() {
+    const quizForm = document.getElementById("quizForm");
+    const formData = new FormData(quizForm);
+
+    // Criar um array para armazenar as respostas do usuário
+    const respostasUsuario = [];
+
+    formData.forEach((value) => {
+      respostasUsuario.push(value);
     });
-  </script>
+
+    // Gerar o conteúdo do PDF com as respostas do usuário
+    let conteudoHTML = "Respostas do Quiz:\n";
+    const questoes = document.querySelectorAll("li");
+    questoes.forEach((questao, index) => {
+      const enunciado = questao.querySelector("p").innerText;
+      const respostaSelecionada = respostasUsuario[index];
+      const resposta = `Questão ${index + 1}: ${enunciado}\nResposta: ${respostaSelecionada}\n\n`;
+      conteudoHTML += resposta;
+    });
+
+    // Converter o conteúdo HTML para imagem usando html2canvas.js com scale maior (exemplo: 3)
+    html2canvas(document.body, { scale: 3 }).then(canvas => {
+      // Obter a imagem em formato de base64
+      const imgData = canvas.toDataURL("image/png");
+
+      // Criar o link do WhatsApp com a mensagem e a imagem anexada
+      const whatsappLink = "https://api.whatsapp.com/send?phone=5574981265381" + encodeURIComponent(conteudoHTML);
+      
+      // Abrir o link do WhatsApp
+      window.open(whatsappLink);
+    });
+  });
+</script>
 </body>
 </html>
