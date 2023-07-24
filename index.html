@@ -91,12 +91,33 @@
         padding-left: 5px;
       }
     }
+
+    /* Additional style to display label and input in the same line */
+    .form-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-label {
+      flex: 0 0 150px;
+      padding-right: 7px;
+    }
+
+    .form-input {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
   <div class="quiz">
     <h1>Atividade Final de Sociologia da Religião</h1>
     <form id="quizForm">
+      <!-- Adicionando campos de "Nome de Aluno" e "Número WhatsApp" -->
+      <div class="form-row">
+        <p class="form-label" for="nomeAluno">Nome de Aluno:</p>
+        <input class="form-input" type="text" name="nomeAluno" id="nomeAluno" required>
+      </div>
+
       <ol>
         <li>
           <h3>Questão 1:</h3>
