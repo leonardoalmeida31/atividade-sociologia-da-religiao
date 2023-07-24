@@ -8,7 +8,7 @@
       margin: 20px;
     }
     .quiz {
-      max-width: 900px;
+      max-width: 600px;
       margin: 0 auto;
     }
     h1 {
@@ -82,13 +82,26 @@
       border-radius: 3px;
     }
 
-    /* Adaptação para dispositivos móveis */
+     /* Adaptação para dispositivos móveis */
     @media (max-width: 768px) {
+      .quiz {
+        max-width: 90%;
+      }
       li {
         padding: 10px;
       }
       label span {
         padding-left: 5px;
+      }
+      .form-label {
+        flex: 0 0 100px;
+        padding-right: 5px;
+      }
+      .form-input {
+        flex: 1;
+      }
+      h1 {
+        font-size: 24px;
       }
     }
 
@@ -106,6 +119,7 @@
     .form-input {
       flex: 1;
     }
+
   </style>
 </head>
 <body>
